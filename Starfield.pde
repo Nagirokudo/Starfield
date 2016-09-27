@@ -1,40 +1,46 @@
 //your code here
-NormalParticle chou;
+NormalParticle[] chou;
 void setup()
 {
 	//your code here
 	size (500,500);
-	chou = new NormalParticle();
+	chou = new NormalParticle[1];
+	for (int i = 0; i < chou.length; i++)
+	{
+		chou[i] = new NormalParticle();
+	}
 }
 void draw()
 {
 	//your code here
 	background(0);
-	chou.move();
-	chou.show();
+	
+		chou[i].move();
+		chou[i].show();
 
 }
 class NormalParticle
 {
 	//your code here
-	int color;
+	int myColor;
 	double speed, myX, myY, angle;
 	NormalParticle ()
 	{
-		color = (int)(Math.random()*255)+80;
-		myX = Math.random()*500;
-		myY = Math.random()*500;
+		
+		myX = 250;
+		myY = 250;
 		angle = Math.random()*2*PI;
-		speed = Math.random()*10;
+		speed = Math.random()*20;
 	}
 	void move ()
 	{
-		myX = myX + (cos(angle) * speed);
-		myY = myY + (sin(angle) * speed);
+		myX = myX + (cos((float)angle) * speed);
+		myY = myY + (sin((float)angle) * speed);
 	}
 	void show()
 	{
-		fill(color, color, color);
+		myColor = color ((int)(Math.random()*255)+100, (int)(Math.random()*255)+100, (int)(Math.random()*255)+100);
+		fill(myColor);
 		ellipse((float)myX, (float)myY, 10,10);
 
 	}
