@@ -8,8 +8,9 @@ public void setup()
 	for (int i = 0; i < chou.length; i++)
 	{
 		chou[i] = new NormalParticle();
-		chou [0] = new OddballParticle();
 	}
+	chou[0] = new OddballParticle();
+	chou[50] = new JumboParticle();
 }
 void draw()
 {
@@ -77,8 +78,20 @@ class OddballParticle implements Particle //uses an interface
 		rect((float)myX, (float)myY, 10, 10, -10);
 	}
 }
-class JumboParticle //uses inheritance
+class JumboParticle implements Particle//uses inheritance
 {
 	//your code here
+	double speed, myX, myY, angle;
+	JumboParticle ()
+	{
+		myX = 300;
+		myY = 300;
+		angle = PI;
+		
+	}
+	void spin ()
+	{
+		angle = angle + 2*PI;
+	}
 }
 
