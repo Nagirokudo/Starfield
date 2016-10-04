@@ -22,6 +22,7 @@ void draw()
 		chou[i].move();
 		chou[i].show();
 	}
+	((OddballParticle)chou[0]).spin();
 
 }
 class NormalParticle implements Particle
@@ -35,7 +36,7 @@ class NormalParticle implements Particle
 		myX = 250;
 		myY = 250;
 		angle = Math.random()*2*Math.PI;
-		speed = Math.random()*20;
+		speed = Math.random()*5;
 	}
 	public void move ()
 	{
@@ -75,23 +76,25 @@ class OddballParticle implements Particle //uses an interface
 	public void show()
 	{
 		fill(#ff99ff);
-		rect((float)myX, (float)myY, 10, 10, -10);
+		rect((float)myX, (float)myY, 20, 20, -30);
+	}
+	void spin()
+	{
+		angle = angle + .1;
+		speed = speed + .05;
+		System.out.println(angle);
 	}
 }
-class JumboParticle implements Particle//uses inheritance
+class JumboParticle extends NormalParticle//uses inheritance
 {
-	//your code here
-	double speed, myX, myY, angle;
 	JumboParticle ()
-	{
-		myX = 300;
-		myY = 300;
-		angle = PI;
-		
+	{	
 	}
-	void spin ()
+	public void show()
 	{
-		angle = angle + 2*PI;
+		myColor = color ((int)(Math.random()*255)+50, (int)(Math.random()*255)+20, (int)(Math.random()*255)+80);
+		fill(myColor);
+		ellipse((float)myX, (float)myY, 20, 20);
 	}
 }
 
