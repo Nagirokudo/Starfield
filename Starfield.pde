@@ -16,20 +16,24 @@ void draw()
 {
 	//your code here
 	background(0);
-	
 	for (int i = 0; i < chou.length; i++)
 	{
 		chou[i].move();
 		chou[i].show();
 	}
 	((OddballParticle)chou[699]).spin();
+	moon();
+	//noLoop();
 
 }
+	
 
 void moon()
-{
-
-}
+	{
+		fill(255);
+		ellipse(250, 250 , 50, 50);
+		
+	}
 
 class NormalParticle implements Particle
 {
@@ -94,9 +98,6 @@ class OddballParticle implements Particle //uses an interface
 	void spin()
 	{
 		rotationBy +=.05;
-		// angle = angle + .05;
-		// speed = speed + .05;
-		// System.out.println(angle);
 	}
 }
 class JumboParticle extends NormalParticle//uses inheritance
@@ -110,6 +111,15 @@ class JumboParticle extends NormalParticle//uses inheritance
 		fill(myColor);
 		ellipse((float)myX, (float)myY, 20, 20);
 		
+	}
+}
+void mousePressed()
+{
+	for (int i = 0; i < chou.length; i++)
+	{
+		chou[i] = new NormalParticle();
+		chou[699] = new OddballParticle();
+		chou[49] = new JumboParticle();
 	}
 }
 
